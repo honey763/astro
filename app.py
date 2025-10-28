@@ -614,13 +614,23 @@ def generate_report():
     if not start_dt_str or not end_dt_str or not report_type:
         return "Missing required parameters", 400
 
+#============================ DATE EXTENSION OF PDF GENERATION logic starts here  ##=======================
+
+    #============================ DATE EXTENSION OF PDF GENERATION ##=======================
+    #============================ DATE EXTENSION OF PDF GENERATION ##=======================
+    #============================ DATE EXTENSION OF PDF GENERATION ##=======================
+    #============================ DATE EXTENSION OF PDF GENERATION ##=======================
+
+    
     # Convert the input strings to datetime objects for comparison
     start_dt_full = TZ.localize(datetime.strptime(start_dt_str, "%Y-%m-%dT%H:%M"))
     end_dt_full = TZ.localize(datetime.strptime(end_dt_str, "%Y-%m-%dT%H:%M"))
 
     # Set the allowed date range for manual restriction
     min_allowed_date = TZ.localize(datetime(2025, 1, 1))
-    max_allowed_date = TZ.localize(datetime(2025, 10, 31, 23, 59, 59))
+    # max_allowed_date = TZ.localize(datetime(2025, 10, 31, 23, 59, 59))
+    max_allowed_date = TZ.localize(datetime(2025, 11, 30, 23, 59, 59))
+
 
     # Check if the requested date range is outside the allowed period
     if not (min_allowed_date <= start_dt_full <= max_allowed_date and
@@ -662,4 +672,3 @@ if __name__ == '__main__':
     import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
-
